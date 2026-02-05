@@ -12,7 +12,7 @@ import { WithdrawalConfirmationDrawer } from "./WithdrawalConfirmationDrawer";
 import { WithdrawalSuccessDialog } from "./WithdrawalSuccessDialog";
 
 export function WithdrawalCard() {
-    const { withdrawalStatus, activeMethod } = useMockState();
+    const { withdrawalStatus, setWithdrawalStatus, activeMethod } = useMockState();
     const [amount, setAmount] = useState("");
     const [confirmOpen, setConfirmOpen] = useState(false);
     const [successOpen, setSuccessOpen] = useState(false);
@@ -117,11 +117,11 @@ export function WithdrawalCard() {
             <Button
                 className={cn(
                     "w-full h-14 rounded-full text-lg font-bold shadow-xl transition-all text-white",
-                    isInsufficient
+                    (isInsufficient || !amount)
                         ? "disabled:opacity-50 disabled:cursor-not-allowed bg-[#C6ADF8] hover:bg-[#B08CEF]"
                         : "bg-[#AD00FF] hover:bg-[#9000D4] shadow-purple-200"
                 )}
-                disabled={isInsufficient}
+                disabled={isInsufficient || !amount}
                 onClick={handleWithdrawClick}
             >
                 Withdraw via <span className="font-black italic ml-1 uppercase">{activeMethod || '...'}</span>
@@ -137,7 +137,13 @@ export function WithdrawalCard() {
 
             <WithdrawalSuccessDialog
                 open={successOpen}
-                onOpenChange={setSuccessOpen}
+                onOpenChange={(open) => {
+                    setSuccessOpen(open);
+                    if (!open) {
+                        // Reset to insufficient state after closing success dialog
+                        setWithdrawalStatus("insufficient");
+                    }
+                }}
             />
         </div>
     );
