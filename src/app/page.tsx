@@ -8,7 +8,7 @@ import { TaskList } from "@/components/rewards/TaskList";
 
 export default function Home() {
   return (
-    <div className="min-h-screen pb-24 text-slate-900 bg-[#252525]">
+    <div className="min-h-screen text-slate-900 bg-[#252525]">
       <div className="mx-auto max-w-md bg-white min-h-screen shadow-sm relative flex flex-col">
         {/* Status Bar Placeholder */}
         <div className="flex justify-between items-center px-6 py-3 text-sm font-semibold sticky top-0 z-50 bg-white/80 backdrop-blur-md">
@@ -27,7 +27,7 @@ export default function Home() {
         </div>
 
         {/* Content Container */}
-        <main className="px-5 space-y-6 pt-2 pb-8 flex-1">
+        <main className="px-5 space-y-6 pt-2 pb-24 flex-1">
           <HeaderStats />
           <DailyCheckIn />
           <BonusCard />
