@@ -14,14 +14,18 @@ import { WithdrawalSuccessDialog } from "./WithdrawalSuccessDialog";
 export function WithdrawalCard() {
     const { withdrawalStatus, setWithdrawalStatus, activeMethod } = useMockState();
     const [amount, setAmount] = useState("");
+    const [error, setError] = useState("");
     const [confirmOpen, setConfirmOpen] = useState(false);
     const [successOpen, setSuccessOpen] = useState(false);
 
     const isInsufficient = withdrawalStatus === "insufficient";
 
     const handleWithdrawClick = () => {
-        if (!amount || parseFloat(amount) < 4) {
-            // Basic validation, in real app show toast
+        if (!amount) return;
+
+        const value = parseFloat(amount);
+        if (isNaN(value) || value < 4) {
+            setError("Minimum withdrawal amount is $4");
             return;
         }
         setConfirmOpen(true);
@@ -98,16 +102,27 @@ export function WithdrawalCard() {
                         {/* Withdraw Input */}
                         <div className="mt-6 space-y-2">
                             <h4 className="text-sm text-gray-500 font-medium">Withdraw</h4>
-                            <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg h-12 px-4 shadow-sm">
+                            <div className={cn(
+                                "flex items-center gap-2 bg-white border rounded-lg h-12 px-4 shadow-sm transition-colors",
+                                error ? "border-red-500 ring-1 ring-red-100" : "border-gray-200"
+                            )}>
                                 <span className="text-gray-400 text-sm">$</span>
                                 <input
                                     type="text"
                                     placeholder="Amount (min $4, integers only)"
                                     className="flex-1 text-sm text-slate-900 placeholder:text-gray-300 outline-none"
                                     value={amount}
-                                    onChange={(e) => setAmount(e.target.value)}
+                                    onChange={(e) => {
+                                        setAmount(e.target.value);
+                                        if (error) setError("");
+                                    }}
                                 />
                             </div>
+                            {error && (
+                                <p className="text-xs text-red-500 ml-1 animate-in fade-in slide-in-from-top-1">
+                                    {error}
+                                </p>
+                            )}
                         </div>
                     </>
                 )}
