@@ -4,7 +4,7 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerFooter, DrawerC
 import { Button } from "@/components/ui/button";
 import { useMockState, WithdrawalMethod, WithdrawalDetails } from "@/context/MockStateContext";
 import { useState } from "react";
-import { WithdrawalSettingsModal } from "./WithdrawalSettingsModal";
+import { WithdrawalSettingsDrawer } from "./WithdrawalSettingsDrawer";
 import { ChevronRight } from "lucide-react";
 
 interface WithdrawalConfirmationDrawerProps {
@@ -102,8 +102,8 @@ export function WithdrawalConfirmationDrawer({ open, onOpenChange, amount, onCon
                 </div>
             </DrawerContent>
 
-            {/* Nested Settings Modal */}
-            <WithdrawalSettingsModal
+            {/* Nested Settings Drawer */}
+            <WithdrawalSettingsDrawer
                 open={settingsOpen}
                 onOpenChange={setSettingsOpen}
             />

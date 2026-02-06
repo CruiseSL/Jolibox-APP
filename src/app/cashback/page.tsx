@@ -1,34 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronLeft, History, SquarePen } from "lucide-react";
+import { ChevronLeft, History } from "lucide-react";
 import { BalanceHeader } from "@/components/cashback/BalanceHeader";
 import { DetailCard } from "@/components/cashback/DetailCard";
 import { WithdrawalCard } from "@/components/cashback/WithdrawalCard";
-import { WithdrawalSettingsModal } from "@/components/cashback/WithdrawalSettingsModal";
 import { useMockState } from "@/context/MockStateContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function CashbackPage() {
     const { activeMethod } = useMockState();
-    const [settingsOpen, setSettingsOpen] = useState(false);
-    const [isMandatory, setIsMandatory] = useState(false);
 
-    // Initial check for mandatory settings
-    // Initial check for mandatory settings
-    useEffect(() => {
-        if (!activeMethod) {
-            setIsMandatory(true);
-            setSettingsOpen(true);
-        } else {
-            setIsMandatory(false);
-        }
-    }, [activeMethod]);
-
-    const handleEditClick = () => {
-        setIsMandatory(false);
-        setSettingsOpen(true);
-    };
+    // No mandatory check on load anymore
 
     return (
         <div className="min-h-screen text-slate-900 pb-10 bg-[#252525]"> {/* Outer dark background */}
@@ -56,13 +39,6 @@ export default function CashbackPage() {
                     </Link>
                     <h1 className="text-lg font-bold text-slate-900">Cashback</h1>
                     <div className="flex items-center">
-                        {/* Edit Button */}
-                        <button
-                            onClick={handleEditClick}
-                            className="p-2 hover:bg-white/50 rounded-full transition-colors relative"
-                        >
-                            <SquarePen className="h-5 w-5 text-gray-700" strokeWidth={2} />
-                        </button>
                         <button className="p-2 -mr-2 hover:bg-white/50 rounded-full transition-colors">
                             <History className="h-6 w-6 text-gray-500" strokeWidth={2} />
                         </button>
@@ -75,13 +51,6 @@ export default function CashbackPage() {
                     <DetailCard />
                     <WithdrawalCard />
                 </main>
-
-                {/* Settings Modal */}
-                <WithdrawalSettingsModal
-                    open={settingsOpen}
-                    onOpenChange={setSettingsOpen}
-                    isMandatory={isMandatory}
-                />
             </div>
         </div>
     );
