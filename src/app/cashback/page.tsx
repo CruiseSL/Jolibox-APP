@@ -14,7 +14,7 @@ export default function CashbackPage() {
     // No mandatory check on load anymore
 
     return (
-        <div className="min-h-screen text-slate-900 pb-10 bg-[#252525]"> {/* Outer dark background */}
+        <div className="min-h-screen text-slate-900 bg-[#252525]"> {/* Outer dark background */}
             <div className="mx-auto max-w-md min-h-screen relative flex flex-col bg-[#F8F5FF]"> {/* Inner light purple background */}
                 {/* Status Bar Placeholder */}
                 <div className="flex justify-between items-center px-6 py-3 text-sm font-semibold sticky top-0 z-50 bg-[#F8F5FF]/95 backdrop-blur-md">
@@ -46,7 +46,7 @@ export default function CashbackPage() {
                 </div>
 
                 {/* Content */}
-                <main className="px-5 pt-2 flex-1 space-y-5">
+                <main className="px-5 pt-2 flex-1 space-y-5 pb-10">
                     <BalanceHeader />
                     <DetailCard />
                     <WithdrawalCard />

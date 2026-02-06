@@ -62,7 +62,7 @@ export function WithdrawalCard() {
                             <p className="text-xs text-gray-500 font-medium">Earn more Jolicoins to reach the minimum:</p>
 
                             <Link href="/" className="flex justify-between items-center bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors">
-                                <span className="text-sm font-medium text-slate-700">Tasks & check-in (faster)</span>
+                                <span className="text-sm font-medium text-slate-700">Tasks & check-in</span>
                                 <div className="flex items-center gap-1 text-[#AD00FF] text-xs font-bold">
                                     Go to Rewards <ArrowRight className="h-3 w-3" />
                                 </div>
@@ -94,7 +94,7 @@ export function WithdrawalCard() {
                             <p className="text-xs text-gray-500 font-medium">Earn more Jolicoins to reach the minimum:</p>
 
                             <Link href="/" className="flex justify-between items-center bg-gray-50 p-3 rounded-lg hover:bg-gray-100 transition-colors">
-                                <span className="text-sm font-medium text-slate-700">Tasks & check-in (faster)</span>
+                                <span className="text-sm font-medium text-slate-700">Tasks & check-in</span>
                                 <div className="flex items-center gap-1 text-[#AD00FF] text-xs font-bold">
                                     Go to Rewards <ArrowRight className="h-3 w-3" />
                                 </div>

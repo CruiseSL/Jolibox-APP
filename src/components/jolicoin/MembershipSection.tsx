@@ -54,12 +54,12 @@ export function MembershipSection() {
     };
 
     return (
-        <div className="space-y-3 pb-8">
-            <h3 className="text-base font-bold text-slate-900">Day Pass</h3>
+        <div className="rounded-2xl bg-white p-5 shadow-sm space-y-4">
+            <h4 className="font-bold text-slate-900 text-sm">Day Pass</h4>
 
             <div className="space-y-3">
                 {items.map((item, idx) => (
-                    <div key={idx} className="rounded-xl bg-white p-4 shadow-sm border border-gray-100 flex flex-col justify-center gap-3">
+                    <div key={idx} className="rounded-xl bg-gray-50 p-4 border border-gray-100 flex flex-col justify-center gap-3">
                         <div className="flex justify-between items-start w-full">
                             {/* Left Content */}
                             <div className="flex flex-col items-start gap-1 flex-1 pr-2">

@@ -2,7 +2,7 @@ import { CircleHelp } from "lucide-react";
 
 export function BalanceCard() {
     return (
-        <div className="flex flex-col items-center text-center space-y-2 py-6">
+        <div className="flex flex-col items-center text-center space-y-2 py-1">
             <div className="flex items-center gap-1 text-gray-500 text-sm font-medium">
                 <span>Jolicoin Balance</span>
                 <CircleHelp className="h-4 w-4 text-gray-400" />

@@ -70,8 +70,11 @@ export default function JolicoinPage() {
                         </div>
                     </div>
 
-                    <RedeemSection />
-                    <MembershipSection />
+                    <div className="space-y-3">
+                        <h3 className="text-base font-bold text-slate-900">Redeem</h3>
+                        <RedeemSection />
+                        <MembershipSection />
+                    </div>
                 </main>
             </div>
         </div>
