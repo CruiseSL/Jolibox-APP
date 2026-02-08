@@ -10,34 +10,33 @@ export function MembershipSection() {
     const [confirmOpen, setConfirmOpen] = useState(false);
     const [successOpen, setSuccessOpen] = useState(false);
 
+    // Mock active pass data - in a real app this would come from props or context
+    const activePass = {
+        name: "3 Days Pass",
+        expireDate: "10/12 18:00" // Example date/time matching user request format
+    };
+
     const items = [
         {
-            title: "Basic · 1 Day Pass",
+            title: "1 Day Pass",
             price: "10 Jolicoin",
             subtitle: "Skip all game ads for today",
+            tag: null
+        },
+        {
+            title: "3 Days Pass",
+            price: "25 Jolicoin",
+            subtitle: "Enjoy ad-free gaming for 3 days",
             tag: "Most Popular",
             tagColor: "bg-purple-100 text-purple-700"
         },
         {
-            title: "Basic · 3 Days Pass",
-            price: "25 Jolicoin",
-            subtitle: "Enjoy ad-free gaming for 3 days",
-            tag: "Best Value",
-            tagColor: "bg-green-100 text-green-700"
-        },
-        {
-            title: "Basic · 7 Days Pass",
+            title: "7 Days Pass",
             price: "50 Jolicoin",
             subtitle: "A full week without game ads",
-            tag: null
-        },
-        {
-            title: "Standard · 1 Day Pass",
-            price: "20 Jolicoin",
-            subtitle: "Skip game & drama ads for a day",
-            tag: "Try Premium",
-            tagColor: "bg-blue-100 text-blue-600"
-        },
+            tag: "Best Value",
+            tagColor: "bg-green-100 text-green-700"
+        }
     ];
 
     const handleRedeemClick = (item: typeof items[0]) => {
@@ -55,7 +54,13 @@ export function MembershipSection() {
 
     return (
         <div className="rounded-2xl bg-white p-5 shadow-sm space-y-4">
-            <h4 className="font-bold text-slate-900 text-sm">Day Pass</h4>
+            <div className="flex justify-between items-center">
+                <h4 className="font-bold text-slate-900 text-sm">Day Pass</h4>
+                {/* Expiration Time Display */}
+                <div className="text-[10px] text-gray-400 font-medium">
+                    {activePass.name} expires on {activePass.expireDate}
+                </div>
+            </div>
 
             <div className="space-y-3">
                 {items.map((item, idx) => (
