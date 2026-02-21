@@ -13,41 +13,36 @@ export function DailyCheckIn() {
     ];
 
     return (
-        <div className="flex gap-2 overflow-x-auto pb-6 pt-2 px-1 scrollbar-hide snap-x">
+        <div className="flex gap-[16px] overflow-x-auto px-1 scrollbar-hide snap-x">
             {days.map((item) => (
-                <div key={item.day} className="flex flex-col items-center gap-3 min-w-[3.5rem] snap-start">
+                <div key={item.day} className="flex flex-col items-center gap-[6px] min-w-[50px] snap-start">
                     {/* Circle */}
                     <div
                         className={cn(
-                            "flex items-center justify-center rounded-full transition-all relative h-12 w-12",
-                            // Colors
-                            item.status === "claimed" && "bg-purple-100",
-                            item.status === "active" && "bg-[#AD00FF] shadow-xl shadow-purple-200",
-                            item.status === "upcoming" && "bg-purple-50"
+                            "flex flex-col items-center justify-center rounded-full transition-all relative h-[52px] w-[52px]",
+                            item.status === "claimed" ? "border border-[#e9d5ff] bg-white" : "",
+                            item.status === "active" ? "border-[2px] border-[#c084fc] bg-[#fdf4ff] shadow-[0_0_15px_rgba(192,132,252,0.3)]" : "",
+                            item.status === "upcoming" ? "border border-gray-100 bg-white" : ""
                         )}
                     >
                         {item.status === "claimed" ? (
-                            <Check className="h-6 w-6 text-[#AD00FF]" strokeWidth={4} />
+                            <Check className="h-4 w-4 text-slate-800 mb-[1px]" strokeWidth={3} />
                         ) : (
-                            <div className={cn(
-                                "flex flex-col items-center leading-none",
-                                item.status === "active" ? "text-white" : "text-purple-300"
-                            )}>
-                                {item.status !== "active" && <span className="text-[10px] grayscale opacity-70">🪙</span>}
-                                <span className={cn(
-                                    "font-bold",
-                                    item.status === "active" ? "text-sm" : "text-xs"
-                                )}>+{item.reward}</span>
-                            </div>
+                            <img src="/rewards/jolicoin.svg" className={cn("w-[22px] h-[22px] mb-[1px] object-contain", item.status === "upcoming" && "grayscale opacity-40")} alt="Jolicoin" />
                         )}
+                        <span className={cn(
+                            "font-bold leading-none",
+                            item.status === "active" ? "text-[12px] text-[#c084fc]" : "text-[10px] text-slate-800",
+                            item.status === "upcoming" && "text-gray-400"
+                        )}>+{item.reward}</span>
                     </div>
 
-                    {/* Label */}
+                    {/* Label underneath */}
                     <span className={cn(
-                        "text-xs whitespace-nowrap",
-                        item.status === "active" ? "text-slate-900 font-extrabold text-sm" : "text-gray-400 font-medium"
+                        "text-[10px] whitespace-nowrap text-center",
+                        item.status === "active" ? "text-slate-900 font-extrabold" : "text-gray-400 font-medium"
                     )}>
-                        {item.status === "active" ? "Tap to claim" : `${item.day} day`}
+                        {item.status === "active" ? "Today" : `${item.day} day`}
                     </span>
                 </div>
             ))}

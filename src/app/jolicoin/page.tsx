@@ -7,40 +7,40 @@ import { MembershipSection } from "@/components/jolicoin/MembershipSection";
 
 export default function JolicoinPage() {
     return (
-        <div className="min-h-screen text-slate-900 bg-[#252525]">
+        <div className="w-full h-full bg-[#F5F5FA] relative flex flex-col text-slate-900 overflow-hidden">
             {/* Background Gradient Mesh - subtle top glow matching mockup */}
-            <div className="fixed top-0 left-0 right-0 h-64 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-100/60 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-64 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-100/60 via-transparent to-transparent pointer-events-none z-0" />
 
-            <div className="mx-auto max-w-md bg-[#F5F5FA] min-h-screen relative flex flex-col">
-                {/* Status Bar Placeholder */}
-                <div className="flex justify-between items-center px-6 py-3 text-sm font-semibold sticky top-0 z-50 bg-[#F5F5FA]">
-                    <span>9:41</span>
-                    <div className="flex gap-1.5 item-center">
-                        <div className="flex gap-1">
-                            <div className="h-2.5 w-px bg-slate-900"></div>
-                            <div className="h-2.5 w-px bg-slate-900"></div>
-                            <div className="h-2.5 w-px bg-slate-900"></div>
-                            <div className="h-2.5 w-px bg-slate-400"></div>
-                        </div>
-                        <div className="h-3 w-4 border-[1.5px] border-slate-300 rounded-[4px] relative ml-1">
-                            <div className="absolute inset-0.5 bg-slate-900 rounded-[1px]"></div>
-                        </div>
+            {/* Status Bar Placeholder */}
+            <div className="flex justify-between items-center px-6 py-3 text-sm font-semibold sticky top-0 z-50 bg-[#F5F5FA]/90 backdrop-blur-sm flex-shrink-0">
+                <span>9:41</span>
+                <div className="flex gap-1.5 item-center">
+                    <div className="flex gap-1">
+                        <div className="h-2.5 w-px bg-slate-900"></div>
+                        <div className="h-2.5 w-px bg-slate-900"></div>
+                        <div className="h-2.5 w-px bg-slate-900"></div>
+                        <div className="h-2.5 w-px bg-slate-400"></div>
+                    </div>
+                    <div className="h-3 w-4 border-[1.5px] border-slate-300 rounded-[4px] relative ml-1">
+                        <div className="absolute inset-0.5 bg-slate-900 rounded-[1px]"></div>
                     </div>
                 </div>
+            </div>
 
-                {/* Top Navigation */}
-                <div className="flex items-center justify-between px-4 py-2 sticky top-[44px] z-40 bg-[#F5F5FA]">
-                    <Link href="/" className="p-2 -ml-2 hover:bg-black/5 rounded-full transition-colors">
-                        <ChevronLeft className="h-6 w-6 text-slate-900" strokeWidth={2.5} />
-                    </Link>
-                    <h1 className="text-lg font-bold text-slate-900">Jolicoin</h1>
-                    <button className="p-2 -mr-2 hover:bg-black/5 rounded-full transition-colors">
-                        <History className="h-6 w-6 text-gray-500" strokeWidth={2} />
-                    </button>
-                </div>
+            {/* Top Navigation */}
+            <div className="flex items-center justify-between px-4 py-2 sticky top-[44px] z-40 bg-[#F5F5FA]/90 backdrop-blur-sm flex-shrink-0">
+                <Link href="/" className="p-2 -ml-2 hover:bg-black/5 rounded-full transition-colors relative z-10">
+                    <ChevronLeft className="h-6 w-6 text-slate-900" strokeWidth={2.5} />
+                </Link>
+                <h1 className="text-lg font-bold text-slate-900 relative z-10">Jolicoin</h1>
+                <button className="p-2 -mr-2 hover:bg-black/5 rounded-full transition-colors relative z-10">
+                    <History className="h-6 w-6 text-gray-500" strokeWidth={2} />
+                </button>
+            </div>
 
-                {/* Content */}
-                <main className="px-5 pt-4 flex-1 space-y-8 relative z-10 pb-10">
+            {/* Content */}
+            <main className="flex-1 overflow-y-auto scrollbar-hide pb-10 relative z-10">
+                <div className="px-5 pt-4 space-y-8">
                     <BalanceCard />
 
                     <div className="space-y-3">
@@ -62,7 +62,7 @@ export default function JolicoinPage() {
                                 </div>
                             </div>
 
-                            <Link href="/">
+                            <Link href="/" className="block">
                                 <Button className="w-fit px-6 bg-[#AD00FF] hover:bg-[#9600db] text-white rounded-full h-9 text-xs font-semibold shadow-md shadow-purple-100">
                                     Go to Rewards
                                 </Button>
@@ -75,8 +75,8 @@ export default function JolicoinPage() {
                         <RedeemSection />
                         <MembershipSection />
                     </div>
-                </main>
-            </div>
+                </div>
+            </main>
         </div>
     );
 }

@@ -1,44 +1,52 @@
 import { Button } from "@/components/ui/button";
-import { Coins } from "lucide-react";
 
 export function DailyGoal() {
     return (
-        <div className="space-y-4">
-            <div className="flex justify-between items-start">
-                <div className="space-y-1">
-                    <h3 className="text-[17px] font-bold text-slate-900">Play Games & Watch Dramas</h3>
-                    <p className="text-xs text-gray-500 max-w-[200px] leading-relaxed">
-                        Earn 1 Jolicoin every 2 mins (up to
-                        <span className="inline-flex align-middle mx-1">
-                            <Coins className="h-3 w-3 text-purple-500 fill-purple-500" />
-                        </span>
-                        150 daily)
+        <div className="rounded-[24px] bg-gradient-to-r from-[#fff5e1] to-[#fffaf1] shadow-sm border border-[#fbf2e2] overflow-hidden">
+            {/* Top Info Section */}
+            <div className="pl-4 pr-16 py-3 relative overflow-hidden">
+                <div className="relative z-10 flex flex-col justify-center h-[56px]">
+                    <h3 className="text-[#d97706] font-black text-[18px] leading-tight mb-1 whitespace-nowrap">Endless Daily Rewards</h3>
+                    <p className="text-[11px] text-[#cca468] font-bold italic leading-none whitespace-nowrap">
+                        Watch & play to free rewards
                     </p>
                 </div>
-                <Button variant="secondary" className="bg-purple-50 hover:bg-purple-100 text-purple-600 text-xs font-medium h-7 rounded-full px-4">
-                    Go
-                </Button>
+                {/* Dummy Clapperboard Image Position Right */}
+                <div className="absolute -right-3 top-[55%] -translate-y-1/2 w-[105px] h-[105px] drop-shadow-sm pointer-events-none z-20 overflow-visible">
+                    <img src="/rewards/daily_rewards.svg" className="w-full h-full object-contain" alt="Rewards" />
+                </div>
             </div>
 
-            <div className="relative">
-                {/* Custom Striped Progress Bar */}
-                <div className="h-10 w-full rounded-full bg-gray-100 overflow-hidden relative">
-                    <div
-                        className="absolute inset-0 w-full h-full"
-                        style={{
-                            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #e2e8f0 10px, #e2e8f0 14px)'
-                        }}
-                    ></div>
-                    {/* Actual progress fill would go here overlaying the stripes */}
-                    <div
-                        className="absolute left-0 top-0 bottom-0 bg-slate-900 rounded-full z-10 flex items-center px-3"
-                        style={{ width: '25%' }}
-                    >
-                        <span className="text-[10px] font-bold text-white leading-none">0 / 300 mins</span>
-                    </div>
+            {/* Bottom Progress Section */}
+            <div className="bg-white rounded-b-[24px] px-4 py-4 space-y-3">
+                <div className="flex justify-between items-end gap-2">
+                    <p className="text-[10px] text-gray-500 font-medium">Earn 1 Jolicoin every 1 min (up to 300/day)</p>
+                    <Button variant="secondary" className="bg-gray-100 hover:bg-gray-200 text-slate-500 text-[11px] font-bold h-7 rounded-full px-5 min-w-[70px]">
+                        Go
+                    </Button>
                 </div>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-gray-300 font-medium">
-                    60 mins
+
+                <div className="relative pt-1 pb-3">
+                    {/* Progress Bar Container: Striped Background */}
+                    <div className="h-9 w-full rounded-2xl bg-gray-100 overflow-hidden relative">
+                        <div
+                            className="absolute inset-0 w-full h-full opacity-50"
+                            style={{
+                                backgroundImage: 'repeating-linear-gradient(-45deg, transparent, transparent 6px, #cbd5e1 6px, #cbd5e1 10px)'
+                            }}
+                        ></div>
+                        {/* Progress Fill over Stripes */}
+                        <div
+                            className="absolute left-0 top-0 bottom-0 bg-[#d4c1ff] rounded-2xl z-10 flex items-center justify-center border border-purple-200 shadow-sm transition-all duration-500"
+                            style={{ width: '50%' }}
+                        >
+                            <span className="text-[11px] font-bold text-slate-800 leading-none mr-2">+100 Earned</span>
+                        </div>
+                    </div>
+                    {/* Floating Tooltip Pill */}
+                    <div className="absolute left-1/2 -bottom-0 -translate-x-1/2 bg-black text-white text-[9px] font-bold px-3 py-1 rounded-full whitespace-nowrap z-20 shadow-md">
+                        100 / 300 mins
+                    </div>
                 </div>
             </div>
         </div>

@@ -22,6 +22,8 @@ const initialDetails: WithdrawalDetails = {
 interface MockStateContextType {
     withdrawalStatus: WithdrawalStatus;
     setWithdrawalStatus: (status: WithdrawalStatus) => void;
+    showAds: boolean;
+    setShowAds: (show: boolean) => void;
     activeMethod: WithdrawalMethod;
     setActiveMethod: (method: WithdrawalMethod) => void;
     savedDetails: WithdrawalDetails;
@@ -33,6 +35,7 @@ const MockStateContext = createContext<MockStateContextType | undefined>(undefin
 
 export function MockStateProvider({ children }: { children: ReactNode }) {
     const [withdrawalStatus, setWithdrawalStatus] = useState<WithdrawalStatus>("insufficient");
+    const [showAds, setShowAds] = useState<boolean>(true);
     const [activeMethod, setActiveMethod] = useState<WithdrawalMethod>(null);
     const [savedDetails, setSavedDetails] = useState<WithdrawalDetails>(initialDetails);
 
@@ -47,6 +50,8 @@ export function MockStateProvider({ children }: { children: ReactNode }) {
         <MockStateContext.Provider value={{
             withdrawalStatus,
             setWithdrawalStatus,
+            showAds,
+            setShowAds,
             activeMethod,
             setActiveMethod,
             savedDetails,

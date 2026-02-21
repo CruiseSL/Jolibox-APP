@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 
 export function TaskList() {
     return (
-        <div className="space-y-4 pb-4">
-            <h2 className="text-xl font-bold text-slate-900">Tasks</h2>
+        <div className="space-y-4 pb-8">
+            <h2 className="text-[17px] font-black text-slate-900 mb-2 px-1">Tasks</h2>
             <div className="space-y-6">
                 <TaskItem
                     icon={Gamepad2}
@@ -17,7 +17,7 @@ export function TaskList() {
                     actionVariant="primary"
                     bonusBadge="+6"
                 />
-                <div className="h-px bg-gray-100" />
+
                 <TaskItem
                     icon={Film}
                     title="Watch 3 home videos"
@@ -26,15 +26,12 @@ export function TaskList() {
                     actionLabel="Go"
                     actionVariant="secondary"
                 />
-                <div className="h-px bg-gray-100" />
+
                 <TaskItem
                     icon={Smartphone}
                     title="Register a Jolibox account"
                     reward="+1000"
                     progress={0}
-                    // progress 0 implies no progress bar needed for this one based on design? 
-                    // Actually looking at design, "Register" task has no progress bar in the general list either usually 
-                    // or acts as single step. The design shows just the text.
                     hideProgress={true}
                     actionLabel="Claimed"
                     actionVariant="ghost"
@@ -63,39 +60,43 @@ function TaskItem({
     hideProgress?: boolean;
     bonusBadge?: string;
 }) {
+    // Custom thin black line on dashed gray line for progress
+    const dashPattern = "repeating-linear-gradient(90deg, #e2e8f0 0px, #e2e8f0 4px, transparent 4px, transparent 8px)";
+
     return (
-        <div className="flex items-center justify-between gap-3">
-            <div className="h-11 w-11 bg-gray-100/80 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <Icon className="h-6 w-6 text-slate-800" strokeWidth={2.5} />
+        <div className="flex items-center justify-between gap-2.5">
+            <div className="h-[42px] w-[42px] bg-[#f5f5f5] rounded-xl flex items-center justify-center flex-shrink-0">
+                <Icon className="h-5 w-5 text-slate-900" strokeWidth={2.5} />
             </div>
 
-            <div className="flex-1 space-y-1.5 min-w-0">
-                <div className="font-bold text-sm text-slate-900 truncate">{title}</div>
-                <div className="flex items-center gap-2">
-                    <div className="flex h-4 w-4 items-center justify-center rounded-full bg-purple-100 flex-shrink-0">
-                        <Coins className="h-2.5 w-2.5 text-purple-600 fill-purple-600" />
-                    </div>
-                    <span className="text-slate-900 text-xs font-bold">{reward}</span>
+            <div className="flex-1 space-y-1 min-w-0 pr-1">
+                <div className="font-bold text-[13px] text-slate-900 truncate leading-tight">{title}</div>
+                <div className="flex items-center gap-1.5 h-4">
+                    <img src="/rewards/jolicoin.svg" alt="Jolicoin" className="w-[14px] h-[14px]" />
+                    <span className="text-slate-900 text-[11px] font-bold">{reward}</span>
+
                     {!hideProgress && (
-                        <Progress value={progress} className="h-1 w-16 bg-gray-100" indicatorClassName="bg-slate-900" />
+                        <div className="flex-1 max-w-[70px] h-[3px] bg-gray-100 rounded-full overflow-hidden relative ml-1" style={{ backgroundImage: dashPattern }}>
+                            <div className="absolute top-0 bottom-0 left-0 bg-slate-900 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
+                        </div>
                     )}
                 </div>
             </div>
 
-            <div className="relative">
+            <div className="relative flex-shrink-0">
                 {bonusBadge && (
-                    <div className="absolute -top-3 -right-1 z-10 bg-purple-200 text-purple-700 text-[9px] font-bold px-1.5 py-0.5 rounded-full border border-white">
+                    <div className="absolute -top-3 -right-1 z-10 bg-[#e0d4ff] text-[#6039ff] text-[9px] font-black px-[5px] py-[2px] rounded-full border border-white flex items-center gap-0.5 shadow-sm">
+                        <img src="/rewards/jolicoin.svg" className="w-2.5 h-2.5" alt="Jolicoin" />
                         {bonusBadge}
-                        <span className="inline-block ml-0.5 w-1 h-1 bg-purple-500 rounded-full"></span>
                     </div>
                 )}
                 <Button
                     variant={actionVariant === "ghost" ? "ghost" : "default"}
                     className={cn(
-                        "rounded-full h-8 px-6 text-xs font-bold min-w-[80px]",
-                        actionVariant === "primary" && "bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-200",
-                        actionVariant === "secondary" && "bg-purple-50 hover:bg-purple-100 text-purple-600 shadow-none border-0",
-                        actionVariant === "ghost" && "bg-gray-100 hover:bg-gray-200 text-gray-500 cursor-default"
+                        "rounded-full h-8 px-4 text-[11px] font-bold min-w-[68px]",
+                        actionVariant === "primary" && "bg-[#6039ff] hover:bg-[#502ce0] text-white shadow-md shadow-purple-200/50",
+                        actionVariant === "secondary" && "bg-purple-50 hover:bg-purple-100 text-[#6039ff] shadow-none border-0",
+                        actionVariant === "ghost" && "bg-transparent border border-gray-200 text-gray-400 hover:bg-gray-50 cursor-default"
                     )}
                 >
                     {actionLabel}

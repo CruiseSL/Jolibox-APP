@@ -16,7 +16,7 @@ interface WithdrawalRulesDialogProps {
 export function WithdrawalRulesDialog({ open, onOpenChange }: WithdrawalRulesDialogProps) {
     return (
         <Drawer open={open} onOpenChange={onOpenChange}>
-            <DrawerContent className="max-w-md mx-auto h-[85vh] rounded-t-2xl px-6">
+            <DrawerContent className="max-w-[344px] mx-auto h-[85vh] rounded-t-2xl px-6">
                 <div className="mx-auto w-full max-w-sm flex flex-col h-full">
                     <DrawerHeader className="px-0 py-6">
                         <DrawerTitle className="text-lg font-bold text-center">Withdrawal Rules</DrawerTitle>

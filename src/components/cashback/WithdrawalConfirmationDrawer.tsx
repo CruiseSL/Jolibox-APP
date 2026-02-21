@@ -55,7 +55,7 @@ export function WithdrawalConfirmationDrawer({ open, onOpenChange, amount, onCon
 
     return (
         <Drawer open={open} onOpenChange={onOpenChange}>
-            <DrawerContent className="bg-white max-w-md mx-auto">
+            <DrawerContent className="bg-white max-w-[344px] mx-auto">
                 <div className="mx-auto w-full max-w-sm">
                     <DrawerHeader>
                         <DrawerTitle className="text-center text-lg font-bold">Confirm withdrawal</DrawerTitle>

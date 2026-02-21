@@ -90,7 +90,7 @@ export function WithdrawalSettingsDrawer({ open, onOpenChange, onSaveSuccess }: 
 
     return (
         <Drawer open={open} onOpenChange={onOpenChange}>
-            <DrawerContent className="max-w-md mx-auto rounded-t-2xl px-6 bg-white">
+            <DrawerContent className="max-w-[344px] mx-auto rounded-t-2xl px-6 bg-white">
                 <div className="mx-auto w-full max-w-sm flex flex-col">
                     <DrawerHeader className="px-0 py-6 flex justify-between items-center relative">
                         <DrawerTitle className="text-lg font-bold w-full text-center">Add withdrawal account</DrawerTitle>
