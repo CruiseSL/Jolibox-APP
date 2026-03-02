@@ -11,7 +11,7 @@ export function BottomNav() {
 
   const navItems = [
     { icon: Home, label: "Home", href: "/home", active: pathname === "/home" },
-    { icon: Gift, label: "Rewards", href: "/", active: pathname === "/" },
+    { icon: Gift, label: "Rewards", href: "/rewards", active: pathname === "/rewards" },
     { icon: CirclePlay, label: "Video", href: "/foryou", active: pathname === "/foryou" },
     { icon: User, label: "Me", href: "/me", active: pathname === "/me" },
   ];
