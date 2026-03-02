@@ -1,6 +1,11 @@
+"use client";
+
 import { CircleHelp } from "lucide-react";
+import { useMockState } from "@/context/MockStateContext";
 
 export function BalanceCard() {
+    const { jolicoinBalance } = useMockState();
+
     return (
         <div className="flex flex-col items-center text-center space-y-2 py-1">
             <div className="flex items-center gap-1 text-gray-500 text-sm font-medium">
@@ -15,7 +20,7 @@ export function BalanceCard() {
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#AD00FF] to-[#7000FF] flex items-center justify-center shadow-sm">
                     <div className="w-5 h-5 rounded-full border-2 border-white/30" />
                 </div>
-                <div className="text-4xl font-black text-slate-900 tracking-tight">1,250</div>
+                <div className="text-4xl font-black text-slate-900 tracking-tight">{jolicoinBalance.toLocaleString()}</div>
             </div>
         </div>
     );

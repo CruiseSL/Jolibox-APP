@@ -1,3 +1,4 @@
+import { StatusBar } from "@/components/shared/StatusBar";
 import Link from "next/link";
 import { ChevronLeft, History } from "lucide-react";
 import { BalanceCard } from "@/components/jolicoin/BalanceCard";
@@ -11,21 +12,7 @@ export default function JolicoinPage() {
             {/* Background Gradient Mesh - subtle top glow matching mockup */}
             <div className="absolute top-0 left-0 right-0 h-64 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-purple-100/60 via-transparent to-transparent pointer-events-none z-0" />
 
-            {/* Status Bar Placeholder */}
-            <div className="flex justify-between items-center px-6 py-3 text-sm font-semibold sticky top-0 z-50 bg-[#F5F5FA]/90 backdrop-blur-sm flex-shrink-0">
-                <span>9:41</span>
-                <div className="flex gap-1.5 item-center">
-                    <div className="flex gap-1">
-                        <div className="h-2.5 w-px bg-slate-900"></div>
-                        <div className="h-2.5 w-px bg-slate-900"></div>
-                        <div className="h-2.5 w-px bg-slate-900"></div>
-                        <div className="h-2.5 w-px bg-slate-400"></div>
-                    </div>
-                    <div className="h-3 w-4 border-[1.5px] border-slate-300 rounded-[4px] relative ml-1">
-                        <div className="absolute inset-0.5 bg-slate-900 rounded-[1px]"></div>
-                    </div>
-                </div>
-            </div>
+            <StatusBar bgClass="bg-[#F5F5FA]/90 backdrop-blur-sm" />
 
             {/* Top Navigation */}
             <div className="flex items-center justify-between px-4 py-2 sticky top-[44px] z-40 bg-[#F5F5FA]/90 backdrop-blur-sm flex-shrink-0">

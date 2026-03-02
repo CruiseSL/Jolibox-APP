@@ -1,6 +1,10 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/toast";
 
 export function DailyGoal() {
+    const { showToast } = useToast();
     return (
         <div className="rounded-[24px] bg-gradient-to-r from-[#fff5e1] to-[#fffaf1] shadow-sm border border-[#fbf2e2] overflow-hidden">
             {/* Top Info Section */}
@@ -21,7 +25,7 @@ export function DailyGoal() {
             <div className="bg-white rounded-b-[24px] px-4 py-4 space-y-3">
                 <div className="flex justify-between items-end gap-2">
                     <p className="text-[10px] text-gray-500 font-medium">Earn 1 Jolicoin every 1 min (up to 300/day)</p>
-                    <Button variant="secondary" className="bg-gray-100 hover:bg-gray-200 text-slate-500 text-[11px] font-bold h-7 rounded-full px-5 min-w-[70px]">
+                    <Button variant="secondary" className="bg-gray-100 hover:bg-gray-200 text-slate-500 text-[11px] font-bold h-7 rounded-full px-5 min-w-[70px]" onClick={() => showToast("Coming soon")}>
                         Go
                     </Button>
                 </div>

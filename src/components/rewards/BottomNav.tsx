@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, LayoutGrid, Gift, User } from "lucide-react";
+import { Home, CirclePlay, Gift, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -12,7 +12,7 @@ export function BottomNav() {
   const navItems = [
     { icon: Home, label: "Home", href: "/home", active: pathname === "/home" },
     { icon: Gift, label: "Rewards", href: "/", active: pathname === "/" },
-    { icon: LayoutGrid, label: "For You", href: "/foryou", active: pathname === "/foryou" },
+    { icon: CirclePlay, label: "Video", href: "/foryou", active: pathname === "/foryou" },
     { icon: User, label: "Me", href: "/me", active: pathname === "/me" },
   ];
 

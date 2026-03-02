@@ -26,7 +26,7 @@ export function WithdrawalRulesDialog({ open, onOpenChange }: WithdrawalRulesDia
                     <div className="flex-1 overflow-y-auto -mr-2 pr-2 text-sm text-gray-500 leading-relaxed space-y-4 pb-6">
                         <ol className="list-decimal pl-4 space-y-4">
                             <li>
-                                <span className="font-medium text-slate-700">Minimum withdrawal amount:</span> The minimum cashback amount that can be withdrawn is [xxx].
+                                <span className="font-medium text-slate-700">Minimum withdrawal amount:</span> The minimum cashback amount that can be withdrawn is $4.
                             </li>
                             <li>
                                 <span className="font-medium text-slate-700">Processing time:</span> Withdrawal requests will normally be processed within 1-3 business days, depending on the processing time of the chosen withdrawal method.

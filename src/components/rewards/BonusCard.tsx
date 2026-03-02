@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Gamepad2, PlaySquare, Smartphone, Lock, Coins, CircleDollarSign } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Gamepad2, PlaySquare, Smartphone, Lock } from "lucide-react";
+import { TaskItem } from "@/components/shared/TaskItem";
 
 export function BonusCard() {
     return (
@@ -62,6 +61,7 @@ export function BonusCard() {
                     progress={33}
                     actionLabel="Claim"
                     actionVariant="primary"
+                    compact
                 />
                 <TaskItem
                     icon={PlaySquare}
@@ -70,6 +70,7 @@ export function BonusCard() {
                     progress={66}
                     actionLabel="Go"
                     actionVariant="secondary"
+                    compact
                 />
                 <TaskItem
                     icon={Smartphone}
@@ -78,6 +79,8 @@ export function BonusCard() {
                     progress={100}
                     actionLabel="Claimed"
                     actionVariant="ghost"
+                    hideProgress
+                    compact
                 />
             </div>
         </div>
@@ -93,57 +96,3 @@ function TimeBox({ value, label }: { value: string; label: string }) {
     )
 }
 
-function TaskItem({
-    icon: Icon,
-    title,
-    reward,
-    progress,
-    actionLabel,
-    actionVariant
-}: {
-    icon: any;
-    title: string;
-    reward: string;
-    progress: number;
-    actionLabel: string;
-    actionVariant: "primary" | "secondary" | "ghost";
-}) {
-    // Custom thin black line on dashed gray line for progress
-    const dashPattern = "repeating-linear-gradient(90deg, #e2e8f0 0px, #e2e8f0 4px, transparent 4px, transparent 8px)";
-
-    return (
-        <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2.5 flex-1 min-w-0">
-                <div className="h-9 w-9 bg-gray-100 rounded-[14px] flex items-center justify-center flex-shrink-0">
-                    <Icon className="h-4 w-4 text-slate-800" strokeWidth={2.5} />
-                </div>
-                <div className="space-y-0.5 flex-1 min-w-0">
-                    <div className="font-bold text-[13px] text-slate-900 truncate pr-1 leading-tight">{title}</div>
-
-                    <div className="flex items-center gap-1.5 h-4">
-                        <img src="/rewards/jolicoin.svg" alt="Jolicoin" className="w-[14px] h-[14px]" />
-                        <span className="text-slate-900 text-[11px] font-bold">{reward}</span>
-
-                        {progress < 100 && (
-                            <div className="flex-1 max-w-[70px] h-[3px] bg-gray-100 rounded-full overflow-hidden relative ml-1" style={{ backgroundImage: actionVariant !== 'ghost' ? dashPattern : '' }}>
-                                <div className="absolute top-0 bottom-0 left-0 bg-slate-900 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </div>
-
-            <Button
-                variant={actionVariant === "ghost" ? "ghost" : "default"}
-                className={cn(
-                    "rounded-full h-8 px-4 text-[11px] font-bold min-w-[64px] flex-shrink-0",
-                    actionVariant === "primary" && "bg-[#6039ff] hover:bg-[#502ce0] text-white shadow-md shadow-purple-200/50",
-                    actionVariant === "secondary" && "bg-gray-100/80 hover:bg-gray-200 text-slate-500 shadow-none border-0",
-                    actionVariant === "ghost" && "text-slate-400 bg-transparent hover:bg-transparent cursor-default px-0 pr-1 text-xs font-semibold"
-                )}
-            >
-                {actionLabel}
-            </Button>
-        </div>
-    )
-}

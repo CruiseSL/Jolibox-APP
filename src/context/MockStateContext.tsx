@@ -19,6 +19,8 @@ const initialDetails: WithdrawalDetails = {
     crypto: { token: 'USDT', address: '', email: '' }
 };
 
+type SimulatorOrientation = "portrait" | "landscape";
+
 interface MockStateContextType {
     withdrawalStatus: WithdrawalStatus;
     setWithdrawalStatus: (status: WithdrawalStatus) => void;
@@ -29,6 +31,10 @@ interface MockStateContextType {
     savedDetails: WithdrawalDetails;
     setSavedDetails: (details: WithdrawalDetails) => void;
     updateDetail: <K extends keyof WithdrawalDetails>(method: K, data: Partial<WithdrawalDetails[K]>) => void;
+    jolicoinBalance: number;
+    cashbackBalance: number;
+    simulatorOrientation: SimulatorOrientation;
+    setSimulatorOrientation: (orientation: SimulatorOrientation) => void;
 }
 
 const MockStateContext = createContext<MockStateContextType | undefined>(undefined);
@@ -38,6 +44,9 @@ export function MockStateProvider({ children }: { children: ReactNode }) {
     const [showAds, setShowAds] = useState<boolean>(true);
     const [activeMethod, setActiveMethod] = useState<WithdrawalMethod>(null);
     const [savedDetails, setSavedDetails] = useState<WithdrawalDetails>(initialDetails);
+    const [simulatorOrientation, setSimulatorOrientation] = useState<SimulatorOrientation>("portrait");
+    const jolicoinBalance = 1250;
+    const cashbackBalance = withdrawalStatus === "sufficient" ? 6.00 : 3.20;
 
     const updateDetail = <K extends keyof WithdrawalDetails>(method: K, data: Partial<WithdrawalDetails[K]>) => {
         setSavedDetails(prev => ({
@@ -56,7 +65,11 @@ export function MockStateProvider({ children }: { children: ReactNode }) {
             setActiveMethod,
             savedDetails,
             setSavedDetails,
-            updateDetail
+            updateDetail,
+            jolicoinBalance,
+            cashbackBalance,
+            simulatorOrientation,
+            setSimulatorOrientation
         }}>
             {children}
         </MockStateContext.Provider>

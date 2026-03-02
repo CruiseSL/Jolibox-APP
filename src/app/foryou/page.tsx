@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Heart, Search, History } from "lucide-react";
 import { MOCK_GAMES } from "@/lib/mockGames";
+import { useToast } from "@/components/ui/toast";
 
 // Mock Video Data adapted to use actual game identities
 const VIDEOS = [
@@ -34,6 +35,7 @@ export default function ForYouPage() {
     const [isTabVisible, setIsTabVisible] = useState(true);
     const [liked, setLiked] = useState<Record<string, boolean>>({});
     const [adUnlocked, setAdUnlocked] = useState(false);
+    const { showToast } = useToast();
 
     // Touch handling state
     const touchStartY = useRef<number | null>(null);
@@ -113,16 +115,16 @@ export default function ForYouPage() {
     return (
         <div className="w-full h-full bg-black flex flex-col font-sans overflow-hidden relative text-slate-900">
             {/* Top Bar (Sticky Overlaid) */}
-            <div className="absolute top-0 w-full z-50 pt-safe-top">
-                <div className="flex justify-between items-center px-4 py-4">
+            <div className="absolute top-0 w-full z-50">
+                <div className="flex justify-between items-center px-4 py-3">
                     <div className="text-white text-sm font-semibold opacity-0">9:41</div> {/* Invisible spacer */}
 
                     {/* Top Right Actions */}
                     <div className="flex gap-3 items-center">
-                        <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/40 transition-colors">
+                        <button onClick={() => showToast("Coming soon")} className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/40 transition-colors">
                             <History size={20} />
                         </button>
-                        <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/40 transition-colors">
+                        <button onClick={() => showToast("Coming soon")} className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/40 transition-colors">
                             <Search size={20} />
                         </button>
                     </div>
@@ -171,7 +173,7 @@ export default function ForYouPage() {
                                                 <h3 className="text-white font-bold text-[15px] leading-tight block truncate drop-shadow-md">
                                                     {MOCK_GAMES.find(g => g.id === item.gameId)?.title}
                                                 </h3>
-                                                <span className="text-gray-300 text-[12px] font-medium mt-0.5">
+                                                <span className="text-gray-300 text-[11px] font-medium mt-1.5 bg-white/15 px-2 py-0.5 rounded-md w-fit">
                                                     {MOCK_GAMES.find(g => g.id === item.gameId)?.category}
                                                 </span>
                                             </div>

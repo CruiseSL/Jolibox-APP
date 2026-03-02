@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Play, Pause, VolumeX, Star, ShieldCheck, Download } from "lucide-react";
 import { useMockState } from "@/context/MockStateContext";
+import { useToast } from "@/components/ui/toast";
 
 interface FeedAdItemProps {
     isActive: boolean;
@@ -12,6 +13,7 @@ interface FeedAdItemProps {
 
 export function FeedAdItem({ isActive, isVisible, onUnlock }: FeedAdItemProps) {
     const { showAds } = useMockState();
+    const { showToast } = useToast();
     const [timeLeft, setTimeLeft] = useState(10); // 10 seconds ad
     const [isPaused, setIsPaused] = useState(false);
 
@@ -102,7 +104,7 @@ export function FeedAdItem({ isActive, isVisible, onUnlock }: FeedAdItemProps) {
                     </div>
                 </div>
 
-                <button className="w-full bg-[#34A853] py-3.5 rounded-xl text-white font-bold text-[15px] shadow-[0_0_15px_rgba(52,168,83,0.3)] transform transition active:scale-95 flex items-center justify-center gap-2">
+                <button onClick={() => showToast("This is a demo ad")} className="w-full bg-[#34A853] py-3.5 rounded-xl text-white font-bold text-[15px] shadow-[0_0_15px_rgba(52,168,83,0.3)] transform transition active:scale-95 flex items-center justify-center gap-2">
                     Install Game <Download size={16} />
                 </button>
 

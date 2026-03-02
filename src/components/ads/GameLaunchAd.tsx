@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { X, Info } from "lucide-react";
 import { useMockState } from "@/context/MockStateContext";
+import { useToast } from "@/components/ui/toast";
 
 interface GameLaunchAdProps {
     onFinish: () => void;
@@ -10,6 +11,7 @@ interface GameLaunchAdProps {
 
 export function GameLaunchAd({ onFinish }: GameLaunchAdProps) {
     const { showAds } = useMockState();
+    const { showToast } = useToast();
     const [canClose, setCanClose] = useState(false);
     const [secondsLeft, setSecondsLeft] = useState(5);
 
@@ -78,7 +80,7 @@ export function GameLaunchAd({ onFinish }: GameLaunchAdProps) {
                         <p className="text-gray-300 mb-6 text-sm">
                             Unlock premium skins and 10,000 gems. Limited time offer!
                         </p>
-                        <button className="bg-[#34A853] hover:bg-[#2e9649] text-white font-bold py-3.5 px-8 rounded-xl shadow-[0_0_15px_rgba(52,168,83,0.3)] transform transition active:scale-95 w-full text-lg">
+                        <button onClick={() => showToast("This is a demo ad")} className="bg-[#34A853] hover:bg-[#2e9649] text-white font-bold py-3.5 px-8 rounded-xl shadow-[0_0_15px_rgba(52,168,83,0.3)] transform transition active:scale-95 w-full text-lg">
                             Claim Offer
                         </button>
                     </div>

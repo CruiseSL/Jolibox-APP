@@ -17,7 +17,7 @@ export default function PlayPage() {
             </div>
 
             {/* Floating Action / Close Header */}
-            <div className="absolute top-0 w-full z-50 px-4 pt-safe-top pb-2 flex justify-start pointer-events-none mt-4">
+            <div className="absolute top-0 w-full z-50 px-4 pt-3 pb-2 flex justify-start pointer-events-none">
                 <button
                     onClick={() => router.back()}
                     className="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white pointer-events-auto hover:bg-black/80 transition-colors shadow-xl"

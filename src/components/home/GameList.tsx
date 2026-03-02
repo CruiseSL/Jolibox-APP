@@ -12,13 +12,13 @@ export function GameList({ activeTab }: { activeTab: string }) {
     const filteredGames =
         activeTab === "All"
             ? MOCK_GAMES
-            : MOCK_GAMES.filter((g) => g.category === activeTab || (activeTab !== "All" && Math.random() > 0.5)); // Fallback mock
+            : MOCK_GAMES.filter((g) => g.category === activeTab);
 
     return (
         <div className="grid grid-cols-3 gap-x-3 gap-y-6 px-5 pb-24">
             {filteredGames.map((game, index) => {
-                // Insert Ad banner at every 3rd position (index 3, 6, 9, etc.)
-                const showAdBefore = activeTab === "All" && index > 0 && index % 3 === 0;
+                // Insert Ad banner after the 6th and 30th game
+                const showAdBefore = activeTab === "All" && (index === 6 || index === 30);
 
                 return (
                     <div key={game.id} className={showAdBefore ? "col-span-3 contents" : ""}>

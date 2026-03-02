@@ -1,5 +1,6 @@
 "use client";
 
+import { StatusBar } from "@/components/shared/StatusBar";
 import Link from "next/link";
 import { ChevronLeft, History } from "lucide-react";
 import { BalanceHeader } from "@/components/cashback/BalanceHeader";
@@ -15,21 +16,7 @@ export default function CashbackPage() {
 
     return (
         <div className="w-full h-full relative flex flex-col bg-[#F8F5FF] overflow-hidden">
-            {/* Status Bar Placeholder */}
-            <div className="flex justify-between items-center px-6 py-3 text-sm font-semibold sticky top-0 z-50 bg-[#F8F5FF]/95 backdrop-blur-md flex-shrink-0">
-                <span>9:41</span>
-                <div className="flex gap-1.5 item-center">
-                    <div className="flex gap-1">
-                        <div className="h-2.5 w-px bg-slate-900"></div>
-                        <div className="h-2.5 w-px bg-slate-900"></div>
-                        <div className="h-2.5 w-px bg-slate-900"></div>
-                        <div className="h-2.5 w-px bg-slate-400"></div>
-                    </div>
-                    <div className="h-3 w-4 border-[1.5px] border-slate-300 rounded-[4px] relative ml-1">
-                        <div className="absolute inset-0.5 bg-slate-900 rounded-[1px]"></div>
-                    </div>
-                </div>
-            </div>
+            <StatusBar bgClass="bg-[#F8F5FF]/95" />
 
             {/* Top Navigation */}
             <div className="flex items-center justify-between px-4 py-2 sticky top-[44px] z-40 bg-[#F8F5FF]/95 backdrop-blur-md flex-shrink-0">

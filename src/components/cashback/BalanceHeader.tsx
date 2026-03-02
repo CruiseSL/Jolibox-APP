@@ -1,6 +1,11 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useMockState } from "@/context/MockStateContext";
 
 export function BalanceHeader() {
+    const { cashbackBalance } = useMockState();
+
     return (
         <div className="flex flex-col items-center pt-2 pb-6 space-y-4">
             {/* Ticker */}
@@ -15,7 +20,7 @@ export function BalanceHeader() {
             {/* Balance Display */}
             <div className="flex items-baseline gap-2">
                 <span className="text-lg font-medium text-slate-800">SGD</span>
-                <span className="text-5xl font-bold text-slate-900 tracking-tight">6.00</span>
+                <span className="text-5xl font-bold text-slate-900 tracking-tight">{cashbackBalance.toFixed(2)}</span>
             </div>
         </div>
     );

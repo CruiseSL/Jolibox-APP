@@ -1,52 +1,46 @@
 "use client";
 
 import { useState } from "react";
+import { StatusBar } from "@/components/shared/StatusBar";
 import { BottomNav } from "@/components/rewards/BottomNav";
 import { GameList } from "@/components/home/GameList";
-import { Search, Star } from "lucide-react";
+import { Search, Star, Trophy, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { MOCK_GAMES } from "@/lib/mockGames";
+import { useToast } from "@/components/ui/toast";
 
-const TABS = ["All", "Battle", "Casual", "Alpinia oxyphylla"];
+const TABS = ["All", "Action", "Casual", "Puzzle"];
 
 // Taking specific popular slices for top sections
 const TRENDING_GAMES = MOCK_GAMES.slice(0, 3);
 const MINI_ICONS = MOCK_GAMES.slice(3, 7);
 const LEADERBOARD_GAMES = MOCK_GAMES.slice(7, 10);
+const LEADERBOARD_RANKS = [
+    { rank: 1, change: 0 },
+    { rank: 2, change: 1 },
+    { rank: 3, change: 2 },
+];
 const POPULAR_GAMES = MOCK_GAMES.slice(10, 12);
 
 export default function HomePage() {
     const [activeTab, setActiveTab] = useState("All");
+    const { showToast } = useToast();
 
     return (
         <div className="w-full h-full relative flex flex-col bg-[#121212] font-sans overflow-hidden">
-            {/* Status Bar Space */}
-            <div className="px-6 py-2 text-sm font-semibold sticky top-0 z-50 bg-[#121212]/90 backdrop-blur-xl text-white flex justify-between items-center border-b border-transparent flex-shrink-0">
-                <span>9:41</span>
-                <div className="flex gap-1.5 item-center">
-                    <div className="flex gap-0.5 items-end h-3">
-                        <div className="w-1 h-1 bg-white rounded-full"></div>
-                        <div className="w-1 h-1.5 bg-white rounded-full"></div>
-                        <div className="w-1 h-2 bg-white rounded-full"></div>
-                        <div className="w-1 h-2.5 bg-gray-600 rounded-full"></div>
-                    </div>
-                    <div className="h-3 w-5 border border-white/80 rounded-[4px] p-0.5 flex">
-                        <div className="h-full w-[80%] bg-white rounded-[2px]"></div>
-                    </div>
-                </div>
-            </div>
+            <StatusBar variant="dark" bgClass="bg-[#121212]/90 backdrop-blur-xl" />
 
             {/* App Header */}
-            <div className="px-4 pt-2 pb-4 flex items-center justify-between sticky top-[32px] z-40 bg-[#121212]/95 backdrop-blur-xl flex-shrink-0">
+            <div className="px-4 pt-1 pb-3 flex items-center justify-between sticky top-[28px] z-40 bg-[#121212]/95 backdrop-blur-xl flex-shrink-0">
                 <div className="flex gap-6 items-center">
                     <div className="flex flex-col items-center">
                         <h1 className="text-xl font-bold text-white leading-none">Games</h1>
                         <div className="w-6 h-1 rounded-full bg-purple-500 mt-1.5"></div>
                     </div>
-                    <h1 className="text-xl font-bold text-gray-500 leading-none pb-2.5">Dramas</h1>
+                    <h1 className="text-xl font-bold text-gray-500 leading-none pb-2.5 cursor-pointer" onClick={() => showToast("Coming soon")}>Dramas</h1>
                 </div>
-                <button className="text-white pb-2.5">
+                <button className="text-white pb-2.5" onClick={() => showToast("Coming soon")}>
                     <Search size={22} />
                 </button>
             </div>
@@ -64,7 +58,16 @@ export default function HomePage() {
                                     <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${game.image}')` }}></div>
                                 </div>
                                 <h3 className="text-white font-bold text-[13px] text-center line-clamp-2 leading-[1.2] min-h-[30px] mb-3 z-10 tracking-tight group-hover:text-purple-300 transition-colors">{game.title}</h3>
-                                <button className="w-full py-1.5 rounded-full border border-purple-500/50 text-purple-400 font-bold text-[13px] z-10 group-hover:bg-purple-500/10 transition-colors">Play</button>
+                                <div className="w-full py-1.5 rounded-full bg-white/5 border border-white/10 flex items-center justify-center gap-1.5 z-10">
+                                    <Trophy size={13} className="text-yellow-400" />
+                                    <span className="text-white font-bold text-[13px]">{LEADERBOARD_RANKS[i].rank}</span>
+                                    {LEADERBOARD_RANKS[i].change > 0 && (
+                                        <span className="flex items-center gap-0.5 text-green-400 text-[11px] font-bold ml-1">
+                                            <TrendingUp size={10} />
+                                            +{LEADERBOARD_RANKS[i].change}
+                                        </span>
+                                    )}
+                                </div>
                             </Link>
                         ))}
                     </div>

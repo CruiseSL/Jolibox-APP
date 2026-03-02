@@ -1,7 +1,12 @@
+"use client";
+
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { useMockState } from "@/context/MockStateContext";
 
 export function HeaderStats() {
+    const { jolicoinBalance, cashbackBalance } = useMockState();
+
     return (
         <div className="grid grid-cols-2 gap-4 px-3">
             {/* Jolicoin Stats */}
@@ -11,7 +16,7 @@ export function HeaderStats() {
                     <span className="text-[14px] font-medium text-slate-600 tracking-wide">Jolicoin</span>
                     <ChevronRight className="h-4 w-4 text-slate-400" strokeWidth={2.5} />
                 </div>
-                <span className="text-[30px] font-black tracking-tighter text-[#0f172a] leading-none">1,250</span>
+                <span className="text-[30px] font-black tracking-tighter text-[#0f172a] leading-none">{jolicoinBalance.toLocaleString()}</span>
             </Link>
 
             {/* Cashback Stats */}
@@ -21,7 +26,7 @@ export function HeaderStats() {
                     <span className="text-[14px] font-medium text-slate-600 tracking-wide">Cashback</span>
                     <ChevronRight className="h-4 w-4 text-slate-400" strokeWidth={2.5} />
                 </div>
-                <span className="text-[30px] font-black tracking-tighter text-[#0f172a] leading-none">$0.23</span>
+                <span className="text-[30px] font-black tracking-tighter text-[#0f172a] leading-none">${cashbackBalance.toFixed(2)}</span>
             </Link>
         </div>
     );

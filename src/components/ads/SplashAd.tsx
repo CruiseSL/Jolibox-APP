@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { X, Star, ShieldCheck, Download } from "lucide-react";
 import { useMockState } from "@/context/MockStateContext";
+import { useToast } from "@/components/ui/toast";
 
 interface SplashAdProps {
     onFinish: () => void;
@@ -10,6 +11,7 @@ interface SplashAdProps {
 
 export function SplashAd({ onFinish }: SplashAdProps) {
     const { showAds } = useMockState();
+    const { showToast } = useToast();
     const [seconds, setSeconds] = useState(5);
     const [canSkip, setCanSkip] = useState(false);
 
@@ -92,7 +94,7 @@ export function SplashAd({ onFinish }: SplashAdProps) {
             </div>
 
             {/* Top Bar */}
-            <div className="absolute top-0 w-full p-4 flex justify-between items-start pt-12 safe-top">
+            <div className="absolute top-0 w-full p-4 flex justify-between items-start pt-8">
                 <div className="bg-black/60 px-3 py-1 rounded border border-white/10 text-[10px] font-bold tracking-wider uppercase text-gray-300 backdrop-blur-md">
                     Advertisement
                 </div>
@@ -115,8 +117,8 @@ export function SplashAd({ onFinish }: SplashAdProps) {
             </div>
 
             {/* Bottom CTA */}
-            <div className="absolute bottom-8 w-full px-6 pb-safe z-20">
-                <button className="w-full bg-[#34A853] hover:bg-[#2e9649] text-white font-bold text-lg py-4 rounded-xl shadow-[0_0_20px_rgba(52,168,83,0.4)] transform transition active:scale-95 flex items-center justify-center gap-2">
+            <div className="absolute bottom-8 w-full px-6 z-20">
+                <button onClick={() => showToast("This is a demo ad")} className="w-full bg-[#34A853] hover:bg-[#2e9649] text-white font-bold text-lg py-4 rounded-xl shadow-[0_0_20px_rgba(52,168,83,0.4)] transform transition active:scale-95 flex items-center justify-center gap-2">
                     Install Now
                 </button>
             </div>

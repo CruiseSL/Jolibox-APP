@@ -6,6 +6,7 @@ export interface Game {
     videoUrl?: string; // Optional video loop for FYP
     rating: number;
     likes: string; // e.g. "1.2M", "890K"
+    orientation?: "portrait" | "landscape"; // Game screen orientation, default portrait
 }
 
 export const MOCK_GAMES: Game[] = [
@@ -99,7 +100,8 @@ export const MOCK_GAMES: Game[] = [
         category: "Adventure",
         image: "/games/pokemon-go.png",
         rating: 4.2,
-        likes: "6.2M"
+        likes: "6.2M",
+        orientation: "landscape"
     },
     {
         id: "stumble-guys",
